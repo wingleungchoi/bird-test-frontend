@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
 import './App.css';
-import Dropdown from './components/basic/Dropdown';
-import Result from './components/demographic/Result';
+import configureStore from 'configureStore';
+import CensusCotainer from 'containers/census/CensusContainer';
+
+
+const createRoot = (store, {
+  Census,
+}) => (
+  <Provider store={store}>
+    <div className="App">
+      <Census />
+    </div>
+  </Provider>
+
+);
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h5>Variables</h5>
-        <Dropdown />
-        <Result />
-      </div>
+      createRoot(configureStore(), { Census: CensusCotainer, })
     );
   }
 }
