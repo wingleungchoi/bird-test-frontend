@@ -1,34 +1,34 @@
-import { SEARCH_CENSUS, SEARCH_CENSUS_SUCCESS, SEARCH_CENSUS_FAIL } from 'reduxStore/census/types';
+import { GET_DEMOGRAPHIC_OPTIONS, GET_DEMOGRAPHIC_OPTIONS_SUCCESS, GET_DEMOGRAPHIC_OPTIONS_FAIL } from 'reduxStore/census/types';
 
-export const searchCensusSuccess = census => ({
-  type: SEARCH_CENSUS_SUCCESS,
+import { DEMONGRAPHIC_COLUMNS } from 'enum/index';
+
+export const getDemographicOptionsSuccess = demographicOptions => ({
+  type: GET_DEMOGRAPHIC_OPTIONS_SUCCESS,
   payload: {
-    census,
+    demographicOptions,
   },
 });
 
-export const searchCensusFail = errors => ({
-  type: SEARCH_CENSUS_FAIL,
+export const getDemographicOptionsFail = errors => ({
+  type: GET_DEMOGRAPHIC_OPTIONS_FAIL,
   payload: {
     errors,
   },
 });
 
-const startSearchCensus = brand => ({
-  type: SEARCH_CENSUS,
-  payload: {
-    brand,
-  },
+const startSearchCensus = () => ({
+  type: GET_DEMOGRAPHIC_OPTIONS,
+  payload: {},
 });
 
-export async function searchCensus(dispatch, options) {
+export async function getDemographicOptions(dispatch, options) {
   dispatch(startSearchCensus());
-  const matchedCensus = await Promise.solve([]);
-  return dispatch(searchCensusSuccess(matchedCensus));
+  const demographicOptions = await (new Promise((resolve) => { resolve(DEMONGRAPHIC_COLUMNS); }));
+  return dispatch(getDemographicOptionsSuccess(demographicOptions));
 }
 
 export default {
-  searchCensus,
-  searchCensusSuccess,
-  searchCensusFail,
+  getDemographicOptions,
+  getDemographicOptionsSuccess,
+  getDemographicOptionsFail,
 };

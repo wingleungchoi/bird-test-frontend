@@ -1,7 +1,7 @@
-export const getPeoples = state => state.census.peoples;
+export const getDemographicOptions = state => state.census.demographicOptions;
 export const getIsFetching = state => state.census.isFetching;
 
 export default {
-  getPeoples,
+  getDemographicOptions,
   getIsFetching,
 };

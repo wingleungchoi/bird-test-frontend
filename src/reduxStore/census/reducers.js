@@ -1,23 +1,23 @@
 import { combineReducers } from 'redux';
-import { SEARCH_CENSUS, SEARCH_CENSUS_SUCCESS, SEARCH_CENSUS_FAIL } from './types';
+import { GET_DEMOGRAPHIC_OPTIONS, GET_DEMOGRAPHIC_OPTIONS_SUCCESS, GET_DEMOGRAPHIC_OPTIONS_FAIL } from './types';
 
 export const censusReducer = combineReducers({
   isFetching: (state = false, action) => {
     switch (action.type) {
-      case SEARCH_CENSUS:
+      case GET_DEMOGRAPHIC_OPTIONS:
         return true;
-      case SEARCH_CENSUS_SUCCESS:
+      case GET_DEMOGRAPHIC_OPTIONS_SUCCESS:
         return false;
-      case SEARCH_CENSUS_FAIL:
+      case GET_DEMOGRAPHIC_OPTIONS_FAIL:
         return false;
       default: return state;
     }
   },
-  peoples: (state = [], action) => {
+  demographicOptions: (state = [], action) => {
     switch (action.type) {
-      case SEARCH_CENSUS_SUCCESS:
-        return action.payload.peoples;
-      case SEARCH_CENSUS_FAIL:
+      case GET_DEMOGRAPHIC_OPTIONS_SUCCESS:
+        return action.payload.demographicOptions;
+      case GET_DEMOGRAPHIC_OPTIONS_FAIL:
         return [];
       default: return state;
     }
