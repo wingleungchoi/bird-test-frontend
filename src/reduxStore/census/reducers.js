@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_DEMOGRAPHIC_OPTIONS, GET_DEMOGRAPHIC_OPTIONS_SUCCESS, GET_DEMOGRAPHIC_OPTIONS_FAIL } from './types';
+import { GET_DEMOGRAPHIC_OPTIONS, GET_DEMOGRAPHIC_OPTIONS_SUCCESS, GET_DEMOGRAPHIC_OPTIONS_FAIL } from 'reduxStore/census/types';
 
 export const censusReducer = combineReducers({
   isFetching: (state = false, action) => {
@@ -16,7 +16,7 @@ export const censusReducer = combineReducers({
   demographicOptions: (state = [], action) => {
     switch (action.type) {
       case GET_DEMOGRAPHIC_OPTIONS_SUCCESS:
-        return action.payload.demographicOptions;
+        return action.payload.demographicColumns;
       case GET_DEMOGRAPHIC_OPTIONS_FAIL:
         return [];
       default: return state;
