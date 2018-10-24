@@ -1,36 +1,37 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const Result = () => (
+import { capitalize } from 'helpers/stringHelper';
+
+const Result = ({ statistics, selectedColumnName, }) => (
   <Table striped bordered condensed hover>
     <thead>
       <tr>
         <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
+        <th>{capitalize(selectedColumnName)}</th>
+        <th>Count</th>
+        <th>Average</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colSpan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      {
+        statistics.map((e, k) => (
+          <tr key={`${selectedColumnName}-${k}`}>
+            <td>{k}</td>
+            <td>{e.columnValue}</td>
+            <td>{e.count}</td>
+            <td>{e.averageAge}</td>
+          </tr>
+        ))
+      }
     </tbody>
   </Table>
 );
+
+Result.propTypes = {
+  statistics: PropTypes.arrayOf(PropTypes.any).isRequired,
+  selectedColumnName: PropTypes.string.isRequired,
+};
 
 export default Result;
