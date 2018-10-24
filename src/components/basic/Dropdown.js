@@ -4,27 +4,33 @@ import PropTypes from 'prop-types';
 
 import { capitalize } from 'helpers/stringHelper';
 
-const Dropdown = (props) => {
-  const { demographicOptions, } = props;
-  return (
-    <ButtonToolbar>
-      <DropdownButton
-        bsStyle="primary"
-        title="Please Select"
-        key="mockup-key"
-        id="dropdown-basic-mockup-id"
-      >
-        {demographicOptions.map((column, index) => {
-          const eventKey = `column-${index}`;
-          return <MenuItem key={eventKey} eventKey={eventKey}>{capitalize(column)}</MenuItem>
-        })}
-      </DropdownButton>
-    </ButtonToolbar>
-  );
-};
+const Dropdown = ({ options, onSelect, }) => (
+  <ButtonToolbar>
+    <DropdownButton
+      bsStyle="primary"
+      title="Please Select"
+      key="mockup-key"
+      id="dropdown-basic-mockup-id"
+    >
+      {options.map((column, index) => {
+        const eventKey = `column-${index}`;
+        return (
+          <MenuItem
+            key={eventKey}
+            eventKey={column}
+            onSelect={onSelect}
+          >
+            {capitalize(column)}
+          </MenuItem>
+        );
+      })}
+    </DropdownButton>
+  </ButtonToolbar>
+);
 
 Dropdown.propTypes = {
-  demographicOptions: PropTypes.arrayOf(PropTypes.any).isRequired,
+  options: PropTypes.arrayOf(PropTypes.any).isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default Dropdown;
