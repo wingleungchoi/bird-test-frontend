@@ -14,7 +14,7 @@ import {
   GROUP_BY_DEMOGRAPHIC_OPTION_SUCCESS,
   GROUP_BY_DEMOGRAPHIC_OPTION_FAIL
 } from 'reduxStore/census/types';
-import { BACKEND_DOMAIN } from 'enum/index';
+import { BACKEND_DOMAIN } from 'config/index';
 
 // function that makes the api request and returns a Promise for response
 function fetchDemographicColumns() {

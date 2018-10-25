@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 import { capitalize } from 'helpers/stringHelper';
 
-const Dropdown = ({ options, onSelect, }) => (
+const Dropdown = ({ options, onSelect, title, }) => (
   <ButtonToolbar>
     <DropdownButton
       bsStyle="primary"
-      title="Please Select"
+      title={title}
       key="mockup-key"
       id="dropdown-basic-mockup-id"
     >
@@ -31,6 +31,7 @@ const Dropdown = ({ options, onSelect, }) => (
 Dropdown.propTypes = {
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
   onSelect: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Dropdown;
