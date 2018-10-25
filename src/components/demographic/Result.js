@@ -3,6 +3,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 
 import { capitalize } from 'helpers/stringHelper';
+import { round } from 'helpers/numberHelper';
 
 const Result = ({ statistics, selectedColumnName, }) => (
   <Table striped bordered condensed hover>
@@ -21,7 +22,7 @@ const Result = ({ statistics, selectedColumnName, }) => (
             <td>{k}</td>
             <td>{e.columnValue}</td>
             <td>{e.count}</td>
-            <td>{e.averageAge}</td>
+            <td>{round(e.averageAge, 1)}</td>
           </tr>
         ))
       }
